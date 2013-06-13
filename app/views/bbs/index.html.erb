@@ -1,0 +1,36 @@
+<h1>BBS <%= "＜＜管理者＞＞" if session[:user_id].present? %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<%= render 'contribute' %>
+
+<% if session[:user_id].present? %>
+<%   delete_action = 'destroys' %>
+<% else %>
+<%   delete_action = 'deletes' %>
+<% end %>
+<%= form_tag(:action=> delete_action) do %>
+
+<hr>
+
+<%= render 'view' %>
+
+<%= render 'kaminari' %>
+<br /><br />
+
+【記事削除】[<%= check_box_tag "image_only" %>画像のみ削除する]
+<br />
+<% if session[:user_id].blank?%>
+  削除キー<%= text_field_tag "delete_key", "", :size => 8, :maxlength => 8 %>
+<% end %>
+<%= submit_tag "削除" %>
+
+<% end %>
+
+<br />
+
+<% if session[:user_id].present? %>
+  <%= link_to 'ログアウトする', login_path(session[:user_id]), :confirm => 'ログアウトしますか？', :method => :delete %>
+<% else %>
+  <%= link_to "管理者モード", logins_path %>
+<% end %>

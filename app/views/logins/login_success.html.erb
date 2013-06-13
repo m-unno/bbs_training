@@ -1,0 +1,6 @@
+<h1>ログイン成功</h1>
+<p>
+ログイン成功しました。
+</p>
+
+<%= link_to 'ログアウトする', login_path(session[:user_id]), :confirm => 'ログアウトしますか？', :method => :delete %>

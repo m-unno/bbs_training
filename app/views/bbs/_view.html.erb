@@ -1,0 +1,23 @@
+<% @bbs_threads.each do |thread| %>
+
+<table <%= "bgcolor=#cccccc" if thread.delflag %>>
+  <tr>
+    <td>
+      <% if thread.image.present? && (thread.imgdelflag == false || session[:user_id].present?) %>
+        画像ファイル：<%= link_to thread.id, image_bb_path(thread.id) %>-(<%= thread.image.size %> Byte)
+        <%= if thread.imgdelflag then "<この画像は削除されています。>" end %>
+        <br /><%= link_to image_tag( thumbnail_bb_path(thread.id), :alt => thread.id, :align => "left" ), image_bb_path(thread.id) if thread.thumbnail.present? %>
+      <% end %>
+      
+      <%= check_box_tag "checked_items[#{thread.id}]" %>
+      <%= thread.title %> name <%= thread.name %> <%= thread.created_at.strftime("%Y/%m/%d %H:%M:%S") %> No.<%= thread.id %>
+
+      
+      <%= simple_format(h(thread.comment), {}, :sanitize => false) %>
+    </td>
+  </tr>
+</table>
+
+<hr />
+
+<% end %>

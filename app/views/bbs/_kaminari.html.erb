@@ -1,0 +1,21 @@
+<% if @view_page == 0 %>
+  <%= "最初のページ" -%>
+<% else %>
+ <%= link_to "前のページ", bb_path(@view_page - 1) -%>
+<% end %>
+
+<% @total_page.times do |i| %>
+<%=  "[" -%> 
+<%   if i == @view_page %>
+<%=    @view_page -%>
+<%   else %>
+<%=    link_to i, bb_path(i) -%>
+<%   end %>
+<%=  "]" -%> 
+<% end %>
+
+<% if (@view_page + 1) >= @total_page %>
+  <%= "最後のページ" -%>
+<% else %>
+ <%= link_to "次のページ", bb_path(@view_page + 1) -%>
+<% end %>

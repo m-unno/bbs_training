@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  name: MyString
+  email: MyText
+  comment: MyText
+  image: 
+  content_type: MyString
+  thumbnail: 
+  delkey: MyString
+  delflag: false
+  imgdelflag: false
+
+two:
+  title: MyString
+  name: MyString
+  email: MyText
+  comment: MyText
+  image: 
+  content_type: MyString
+  thumbnail: 
+  delkey: MyString
+  delflag: false
+  imgdelflag: false
